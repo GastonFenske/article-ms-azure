@@ -1,0 +1,1 @@
+[![Deployment Pipeline](https://github.com/GastonFenske/article-ms-azure/actions/workflows/pipeline.yml/badge.svg)](https://github.com/GastonFenske/article-ms-azure/actions/workflows/pipeline.yml)
