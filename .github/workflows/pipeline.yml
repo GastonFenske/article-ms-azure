@@ -22,6 +22,12 @@ jobs:
       # - name: Run tests
       #   run: |
       #     python -m unittest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: python-app
+          path: .  # Adjust this path to match your artifacts
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -31,7 +37,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: python-app
           path: .
