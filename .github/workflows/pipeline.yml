@@ -52,6 +52,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
+          ports: 6000
+          cpu: 1
           app-name: 'my-flask-app-articles'
           slot-name: 'production'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_acdabd344325476e9816a6aad2ec6b70 }}
