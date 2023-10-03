@@ -36,6 +36,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}  # Debes configurar esta variable de secreto en tu repositorio con las credenciales de Azure
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
