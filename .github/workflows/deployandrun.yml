@@ -17,7 +17,7 @@ jobs:
       - name: 'Login via Docker'
         uses: azure/docker-login@v1
         with:
-          login-server: ${{ secrets.ARC_NAME }}
+          login-server: ${{ secrets.ACR_NAME }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
