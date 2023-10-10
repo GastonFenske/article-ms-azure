@@ -21,8 +21,9 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build:
-    runs-on: ubuntu-20.04
 
+    runs-on: ubuntu-20.04
+    needs: security
 
     steps:
       - uses: actions/checkout@v3
