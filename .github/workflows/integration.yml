@@ -24,9 +24,12 @@ jobs:
       - name: 'Login via Docker'
         uses: azure/docker-login@v1
         with:
-          login-server: ${{ secrets.ACR_NAME }}
+          registry: ${{ secrets.ACR_NAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+          ecr: 'false'
+          logout: 'true'
+          
       - run: |
           docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
           docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
