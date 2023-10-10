@@ -1,6 +1,6 @@
 
 GROUP_NAME=umGroupResource
-APP_NAME=my-flask-app-articles
+APP_NAME=universidad
 SUSCRIPTION_ID=9682b5b1-86a1-4971-982c-b5ae60c23814
 
 # echo $ACR_REGISTRY_ID
