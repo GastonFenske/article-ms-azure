@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
           docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
-          docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
+      #    docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
 
   deploy:
     runs-on: ubuntu-latest
