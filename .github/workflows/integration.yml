@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
-        continue-on-error: true # To make sure that SARIF upload gets called
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
@@ -41,8 +41,8 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
-          docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}
+          docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:v3
+          docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:v3
 
   deploy:
     runs-on: ubuntu-latest
@@ -76,3 +76,5 @@ jobs:
       - name: "Logout"
         run: |
           az logout
+
+          
