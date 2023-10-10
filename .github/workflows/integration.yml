@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
           docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ github.sha }}
-          docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ github.sha }}
+      #    docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ github.sha }}
       # - name: 'Tag release'
       #   uses: anothrNick/github-tag-action@1.64.0
       #   env:
