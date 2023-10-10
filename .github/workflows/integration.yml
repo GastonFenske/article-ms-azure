@@ -67,7 +67,7 @@ jobs:
           location: eastus
           name: python-app
           resource-group: umGroupResource
-          image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ github.sha }}          
+          image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}          
           dns-name-label: python-app-${{github.run_id}}-${{github.run_attempt}}
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
