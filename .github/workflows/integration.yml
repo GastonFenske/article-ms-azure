@@ -41,6 +41,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
+          echo ${{step.tag.outputs.tag}}
           docker build . -t ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:v3
           docker push ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:v3
 
