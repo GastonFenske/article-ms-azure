@@ -24,6 +24,8 @@ jobs:
 
     runs-on: ubuntu-20.04
     needs: security
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
 
     steps:
       - uses: actions/checkout@v3
@@ -67,7 +69,8 @@ jobs:
           location: eastus
           name: python-app
           resource-group: umGroupResource
-          image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ steps.tag.outputs.tag }}          
+          # TODO: el tag de la imagen obtenerlo de una variable global porque aca no esta llegando, esta en otro job
+          image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ needs.build.outputs.tag }}          
           dns-name-label: python-app-${{github.run_id}}-${{github.run_attempt}}
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
