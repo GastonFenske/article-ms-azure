@@ -45,7 +45,6 @@ trace.get_tracer_provider().add_span_processor(
     BatchSpanProcessor(trace_exporter)
 )
 
-
 @app.route('/healthcheck', methods=['GET'])
 def health_check():
     return 'App working correctly', 200
