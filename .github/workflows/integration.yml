@@ -7,6 +7,7 @@ on:
 env:
   REPO_NAME: ${{ github.event.repository.name }}
   IMAGE_VERSION: ${{ github.sha }}
+  CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
 
 jobs:
 
@@ -79,8 +80,11 @@ jobs:
           cpu: 1
           memory: 1
 
+          
       - name: "Logout"
         run: |
           az logout
+
+      
 
           
