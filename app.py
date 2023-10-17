@@ -12,7 +12,6 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
 from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
 
-
 # import logging
 # logging.basicConfig()
 # logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
