@@ -12,7 +12,3 @@ flask-caching==2.0.2
 pybreaker==0.7
 py-consulate-ms==1.0.0
 azure-monitor-opentelemetry==1.0.0
-azure-monitor-opentelemetry-exporter ~= 1.0.0
-opentelemetry-instrumentation-flask == 0.24b0
-opentelemetry-instrumentation-requests == 0.24b0
-opentelemetry-instrumentation-sqlalchemy == 0.24b0
