@@ -1,6 +1,7 @@
 import os
 from main import create_app, db
 from main.models import ArticleModel, CategoryModel
+import logging
 
 from opentelemetry import trace
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
@@ -15,6 +16,10 @@ from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
 # import logging
 # logging.basicConfig()
 # logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
+# Configurar el logging
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)  # Establecer el nivel de logging deseado
 
 
 app = create_app()
@@ -46,9 +51,13 @@ trace.get_tracer_provider().add_span_processor(
 
 @app.route('/healthcheck', methods=['GET'])
 def health_check():
+    app.logger.info('Health check endpoint accessed')  # Ejemplo de log
+
     return 'App working correctly', 200
 
 if __name__ == '__main__':
+    app.logger.info('Starting the application')  # Ejemplo de log al inicio de la aplicación
+
     db.drop_all()
     db.create_all()
     app.run(host = '0.0.0.0', debug = True, port = 6000)
