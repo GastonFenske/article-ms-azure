@@ -1,11 +1,11 @@
-import os
-from main import create_app, db
-from main.models import ArticleModel, CategoryModel
-import logging
+import os, logging
+from flask import Flask
+from flask_cors import CORS
+from dotenv import load_dotenv
 
 from opentelemetry import trace
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.sqlalchemy import SQLAlchemyInstrumentor
+# from opentelemetry.instrumentation.sqlalchemy import SQLAlchemyInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace import TracerProvider
@@ -21,8 +21,13 @@ from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)  # Establecer el nivel de logging deseado
 
+def create_app() -> Flask:
+    app = Flask(__name__)
+    load_dotenv()
+    CORS(app)
+    return app
 
-app = create_app()
+app: Flask = create_app()
 
 app.app_context().push()
 
@@ -34,7 +39,7 @@ trace.set_tracer_provider(
 )
 
 # Enable tracing for sqlalchemy library
-SQLAlchemyInstrumentor().instrument()
+# SQLAlchemyInstrumentor().instrument()
 
 # Enable tracing for Flask library
 FlaskInstrumentor().instrument_app(app)
@@ -56,6 +61,4 @@ def health_check():
 
 if __name__ == '__main__':
     app.logger.info('Starting the application')  # Ejemplo de log al inicio de la aplicación
-    db.drop_all()
-    db.create_all()
     app.run(host = '0.0.0.0', debug = True, port = 6000)
