@@ -27,7 +27,6 @@ RUN rm -rf /var/lib/apt/lists/*
 USER flaskapp
 RUN mkdir app
 #copia la carpeta del proyecto a la imagen
-COPY ./main ./main
 COPY ./app.py .
 
 ADD requirements.txt ./requirements.txt
