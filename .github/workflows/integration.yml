@@ -71,7 +71,6 @@ jobs:
           name: pythonappproof
           resource-group: umGroupResource
           image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ needs.build.outputs.tag }}          
-          # dns-name-label: pythonappproof-${{github.run_id}}-${{github.run_attempt}}
           dns-name-label: pythonappproof
           dns-name-label-scope: any
           networking-type: Public
