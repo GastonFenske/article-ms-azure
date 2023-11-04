@@ -4,8 +4,10 @@ services:
 
     hello_wolrd_proof:
         build: .
-        networks:
-            - red
-networks:
-    red:
-        external: true
+        ports:
+            - "80:80"
+#         networks:
+#             - red
+# networks:
+#     red:
+#         external: true
