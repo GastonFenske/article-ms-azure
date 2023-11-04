@@ -72,8 +72,8 @@ jobs:
           resource-group: umGroupResource
           image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ needs.build.outputs.tag }}          
           dns-name-label: python-app-${{github.run_id}}-${{github.run_attempt}}
-          dns-name-label-scope: any
-          networking-type: Public
+          # dns-name-label-scope: any
+          # networking-type: Public
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           ports: 80
