@@ -27,7 +27,7 @@ def create_app() -> Flask:
     CORS(app)
     return app
 
-app = create_app()
+app: Flask = create_app()
 
 app.app_context().push()
 
