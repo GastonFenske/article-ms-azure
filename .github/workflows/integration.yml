@@ -68,10 +68,10 @@ jobs:
         uses: azure/aci-deploy@v1
         with:
           location: eastus
-          name: pythonappproof
+          name: python-app
           resource-group: umGroupResource
           image: ${{ secrets.ACR_NAME }}/${{ env.REPO_NAME }}:${{ needs.build.outputs.tag }}          
-          dns-name-label: pythonappproof
+          dns-name-label: python-app-${{github.run_id}}-${{github.run_attempt}}
           dns-name-label-scope: any
           networking-type: Public
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
