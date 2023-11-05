@@ -24,37 +24,37 @@ logging.getLogger().setLevel(logging.INFO)  # Establecer el nivel de logging des
 def create_app() -> Flask:
     app = Flask(__name__)
     load_dotenv()
-    CORS(app)
+    # CORS(app)
     return app
 
 app: Flask = create_app()
 
 app.app_context().push()
 
-# Set global TracerProvider before instrumenting
-trace.set_tracer_provider(
-    TracerProvider(
-        resource=Resource.create({SERVICE_NAME: "article-ms-opentelemetry"})
-    )
-)
+# # Set global TracerProvider before instrumenting
+# trace.set_tracer_provider(
+#     TracerProvider(
+#         resource=Resource.create({SERVICE_NAME: "article-ms-opentelemetry"})
+#     )
+# )
 
 # Enable tracing for sqlalchemy library
 # SQLAlchemyInstrumentor().instrument()
 
-# Enable tracing for Flask library
-FlaskInstrumentor().instrument_app(app)
+# # Enable tracing for Flask library
+# FlaskInstrumentor().instrument_app(app)
 
-# Enable tracing for requests library
-RequestsInstrumentor().instrument()
+# # Enable tracing for requests library
+# RequestsInstrumentor().instrument()
 
-trace_exporter = AzureMonitorTraceExporter(
-    connection_string="InstrumentationKey=63c8e473-95e8-40ee-822f-819240c88ef0;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/"
-)
-trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(trace_exporter)
-)
+# trace_exporter = AzureMonitorTraceExporter(
+#     connection_string="InstrumentationKey=63c8e473-95e8-40ee-822f-819240c88ef0;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/"
+# )
+# trace.get_tracer_provider().add_span_processor(
+#     BatchSpanProcessor(trace_exporter)
+# )
 
-@app.route('/health', methods=['GET'])
+@app.route('/')
 def health_check():
     app.logger.info('Health check endpoint accessed')  # Ejemplo de log
     return 'App working correctly', 200
