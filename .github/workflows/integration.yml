@@ -78,7 +78,7 @@ jobs:
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           ports: 80
           cpu: 1
-          memory: 1.5
+          memory: 1
           # memory: 1.5
           # restart-policy: OnFailure
 
