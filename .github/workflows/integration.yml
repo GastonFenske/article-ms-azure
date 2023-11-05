@@ -76,7 +76,7 @@ jobs:
           # networking-type: Public
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-          ports: 6000
+          ports: 5000
           cpu: 1
           # memory: 1
           memory: 1.5
