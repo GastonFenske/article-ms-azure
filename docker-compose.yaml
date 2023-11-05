@@ -4,9 +4,8 @@ services:
 
     hello_wolrd_proof:
         build: .
-        restart: always
-        networks:
-            - red
-networks:
-    red:
-        external: true
+#         networks:
+#             - red
+# networks:
+#     red:
+#         external: true
