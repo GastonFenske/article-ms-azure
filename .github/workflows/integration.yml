@@ -79,6 +79,7 @@ jobs:
           ports: 80
           cpu: 1
           memory: 1
+          restart-policy: OnFailure
 
       - name: "Logout"
         run: |
