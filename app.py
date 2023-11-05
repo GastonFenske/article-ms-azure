@@ -59,6 +59,12 @@ def health_check():
     app.logger.info('Health check endpoint accessed')  # Ejemplo de log
     return 'App working correctly', 200
 
+@app.route('/articles')
+def get_articles():
+    app.logger.info('Articles endpoint accessed')
+    return 'Articles endpoint', 200
+    
+
 if __name__ == '__main__':
     app.logger.info('Starting the application')  # Ejemplo de log al inicio de la aplicación
     app.run(host = '0.0.0.0', debug = True, port = 5000)
