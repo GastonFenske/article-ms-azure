@@ -20,6 +20,7 @@ from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
 # Configurar el logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)  # Establecer el nivel de logging deseado
+# app_logger = logging.getLogger('app_logger')  # Crear un logger para la aplicación
 
 def create_app() -> Flask:
     app = Flask(__name__)
@@ -53,6 +54,10 @@ trace_exporter = AzureMonitorTraceExporter(
 trace.get_tracer_provider().add_span_processor(
     BatchSpanProcessor(trace_exporter)
 )
+
+@app.route('/exception')
+def exception():
+    raise Exception('Exception raised!')
 
 @app.route('/')
 def health_check():
